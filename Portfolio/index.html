@@ -1,1 +1,138 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Personal Portfolio Website</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<body>
+  <div id="header">
+    <div class="container">
+      <nav>
+        <img src="file:///C:/Users/DELL/Downloads/Images/Avatar.png" height="400px">
+        <ul>
+          <li><a href="#header">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#about">Sections</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="header-text">
+        <p>Software Developer</p>
+        <h1> Hi! Iam <span>Rizwan</span><br>Let's code..</h1>
+      </div>
+    </div>
+  </div>
+  <!--about me section-->
+  <div id="about">
+    <div class="container">
+      <div class="row">
+        <div class="about-col-1">
+          <img src="file:///C:/Users/DELL/Downloads/WhatsApp%20Image%202023-11-10%20at%202.15.01%20PM.jpeg" height="500px" width="250px">
+        </div>
+        <div class="about-col-2">
+          <h1 class="sub-title" style="color: black;">About Me!</h1>
+          <p>Hey there! I'm Rizwan Baig, a B.Tech student and passionate tech enthusiast. I thrive on quick learning and recently interned as a Salesforce Developer at TheSmartBridge. Excited about the dynamic world of tech and eager to contribute my skills to innovative projects. Let's connect and explore the tech landscape together!.</p>
+         <div class="tab-titles">
+          <p class="tab-links active-link" onclick="opentab('skills')">Skills</p>
+          <p class="tab-links" onclick="opentab('projects')">Projects</p>
+          <p class="tab-links" onclick="opentab('education')">Education</p>
+         </div>
+         <div class="tab-contents active-tab" id="skills">
+          <ul>
+            <li><span>Software</span><br> Developer</li>
+            <li><span>Web Developement</span><br>Web app Development </li>
+            <li><span>Apex</span><br>Salesforce Platform </li>
+            <li><span>Java Programming</span><br>Projects </li>
+          </ul>
+         </div>
+         <div class="tab-contents" id="projects">
+          <ul>
+            <li><span>Internships(2023)</span><br>CodSoft(on progress)<br>The Smart Bridge By Salesforce</li>
+            <li><span>Ranger in Salesforce Trailhead</span><br>148000+points</li>
+            <li><span>Portfolio Website</span><br>Codsoft</li>
+            
+          </ul>
+         </div>
+         <div class="tab-contents" id="education">
+          <ul>
+            <li><span>St Martin's Engineering College</span><br>Computer Science Engineering</li>
+            <li><span>Sri Chaitanya College</span><br>(2019-2021)</li>
+          </ul>
+         </div>
+        </div>
+        </div>
+      </div>
+    </div>
+    <!--contact section-->
+    <div id="contact">
+      <div class="container">
+        <div class="row">
+          <div class="contact-left">
+            <h1 class="sub-title">Contact Me</h1>
+            <p><i class="fa fa-paper-plane" aria-hidden="true"></i>rizwanmirza95551@gmail.com</p>
+            <p><i class="fa fa-phone-square" aria-hidden="true"></i>12345678910</p>
+            <div class="social-icons">
+              <a href="https://www.instagram.com"><i class="fa fa-instagram" style="font-size:30px"></i></a>
+              <a href="https://www.twitter.com"><i class="fa fa-twitter" style="font-size:30px"></i></a>
+              <a href="https://www.linkedin.com"><i class="fa fa-linkedin-square" style="font-size:30px"></i></a>
+              <a href=""><i class="fa fa-facebook" style="font-size:30px"></i></a>
+            </div>
+            <button class="pdf">
+              <a href="https://in.docworkspace.com/d/sIFOn2sDJAfjkt6oG?sa=00&st=0t" download><i class="fa-solid fa-file-arrow-down"></i>Download CV</a>
+            </button>
+             
+          </div>
+          <div class="contact-right">
+            <form name="submit-to-google-sheet">
+              <input type="text" name="Name" placeholder="Your Name" required>
+              <input type="email" name="Email" placeholder="Your Email" required>
+              <textarea name="Message" rows="6" placeholder="Your Message"></textarea>
+              <button type="submit" class="Submit">Submit</button>
+            </form>
+            <span id="msg"></span>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>© Rizwan Baig ❤️  All Rights Reserved</ p>
+      </div>
+    </div>
+    <script>
 
+    var tablinks=document.getElementsByClassName("tab-links");
+    var tabcontents=document.getElementsByClassName("tab-contents");
+
+    function opentab(tabname){
+      for(tablink of tablinks){
+        tablink.classList.remove("active-link");
+      }
+      for(tabcontent of tabcontents){
+        tabcontent.classList.remove("active-tab");
+      }
+      event.currentTarget.classList.add("active-link");
+      document.getElementById(tabname).classList.add("active-tab");
+    }
+
+    </script>
+    <script>
+      const scriptURL = 'https://script.google.com/macros/s/AKfycbx57UCZxGj-kPuu9xmqFg6H3aDbdVm1z2I85AwO_2OdUo3JxI2RKxXtRxYSCHleN9wVrw/exec'
+      const form = document.forms['submit-to-google-sheet']
+      const msg=document.getElementById("msg")
+      form.addEventListener('submit', e => {
+        e.preventDefault()
+        fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+          .then(response => {
+            msg.innerHTML="Message sent successfully"
+            setTimeout(function(){
+              msg.innerHTML=""
+            },5000)
+            form.reset()
+          })
+          .catch(error => console.error('Error!', error.message))
+      })
+    </script>
+  </body>
+</html>
